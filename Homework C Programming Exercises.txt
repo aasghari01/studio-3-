@@ -1,0 +1,89 @@
+Homework: C Programming Exercises
+
+Name of Contributors
+- Atiqullah Asghari
+
+1: Minimal Program:
+#include <stdio.h>
+
+int main() {
+    return 0;
+}
+
+2: Pointer to a String:
+
+char *messagePtr = "HELLOWORLD!";
+
+3: Print Each Character Using a For-Loop:
+
+for (int i = 0; messagePtr[i] != '\0'; i++) {
+    printf("%c\n", messagePtr[i]);
+}
+
+4: Dereference Pointer Value
+The dereference operation *messagePtr gives us the value H.
+
+5: Print Dereferenced Value:
+
+printf("%c\n", *messagePtr);
+
+
+6: Print String Using Pointer Arithmetic:
+
+for (int i = 0; i < 11; i++) {
+    printf("%c\n", *(messagePtr + i));
+}
+
+
+7: Print Using a While Loop:
+
+char *ptr = messagePtr;
+while (*ptr != '\0') {
+    printf("%c\n", *ptr);
+    ptr++;
+}
+
+
+8: Print String in Reverse:
+
+void printReverse(char* string) {
+    char* ptr = string;
+    while (*ptr != '\0') {
+        ptr++;
+    }
+    ptr--; // Move back to the last character
+    while (ptr >= string) {
+        printf("%c\n", *ptr);
+        ptr--;
+    }
+}
+
+9: Create a Reversed Copy of Input String:
+
+#include <stdlib.h>
+
+char* reverseString(char* input) {
+    int count = 0;
+    char* ptr = input;
+
+
+    while (*ptr != '\0') {
+        count++;
+        ptr++;
+    }
+
+    char* output = (char*)malloc(count + 1); // Allocate memory for reversed string
+    if (output == NULL) return NULL; // Check for memory allocation failure
+
+    for (int i = 0; i < count; i++) {
+        output[i] = input[count - 1 - i]; // Copy in reverse
+    }
+    output[count] = '\0'; // Add null terminator
+
+    return output;
+}
+
+10: Verify Function Works:
+
+char* reversedMessage = reverseString(messagePtr);
+printf("Reversed string: %s\n", reversedMessage);
